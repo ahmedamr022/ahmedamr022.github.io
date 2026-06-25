@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ahmed Amr — Machine Learning & Computer Vision Engineer. Final-year CS student specializing in AI, Deep Learning, and Computer Vision. Building intelligent solutions with Python, PyTorch, and OpenCV.">
+  <meta name="keywords" content="Ahmed Amr, Machine Learning Engineer, Computer Vision, Deep Learning, AI, Python, PyTorch, OpenCV, Portfolio">
+  <meta name="author" content="Ahmed Amr">
+  <meta name="theme-color" content="#06060e">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ahmed Amr — ML & Computer Vision Engineer">
+  <meta property="og:description" content="Final-year CS student specializing in AI, Deep Learning, and Computer Vision.">
+  <meta property="og:type" content="website">
+
+  <title>Ahmed Amr — Machine Learning & Computer Vision Engineer</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ═══ Preloader ═══ -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-logo">&lt;Ahmed /&gt;</div>
+      <div class="preloader-bar"></div>
+    </div>
+  </div>
+
+  <!-- ═══ Custom Cursor — Aurora Trail ═══ -->
+  <canvas id="cursor-trail-canvas"></canvas>
+  <div class="cursor-ring"></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-label"></div>
+
+  <!-- ═══ Aurora Background Blobs ═══ -->
+  <div class="aurora-container">
+    <div class="aurora-blob aurora-blob-1"></div>
+    <div class="aurora-blob aurora-blob-2"></div>
+    <div class="aurora-blob aurora-blob-3"></div>
+  </div>
+
+  <!-- ═══ Noise Texture Overlay ═══ -->
+  <div class="noise-overlay"></div>
+
+  <!-- ═══ SVG Definitions (for skill rings) ═══ -->
+  <svg style="width:0;height:0;position:absolute;">
+    <defs>
+      <linearGradient id="skillGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#00d4ff" />
+        <stop offset="100%" stop-color="#7c3aed" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       NAVBAR
+       ═══════════════════════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#hero" class="nav-logo">&lt;Ahmed <span>/&gt;</span></a>
+
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#internship" class="nav-link">Internship</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#certifications" class="nav-link">Certs</a></li>
+        <li><a href="#contact" class="nav-link nav-cta">Contact</a></li>
+      </ul>
+
+      <button id="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu">
+      <ul class="mobile-nav-links">
+        <li><a href="#about" class="mobile-nav-link">About</a></li>
+        <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
+        <li><a href="#internship" class="mobile-nav-link">Internship</a></li>
+        <li><a href="#education" class="mobile-nav-link">Education</a></li>
+        <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+        <li><a href="#certifications" class="mobile-nav-link">Certifications</a></li>
+        <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <section class="hero" id="hero">
+    <canvas id="neural-canvas"></canvas>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Open to Opportunities
+      </div>
+
+      <p class="hero-greeting">Hello, I'm</p>
+      <h1 class="hero-name">
+        <span class="gradient-text" data-text="Ahmed Amr">Ahmed Amr</span>
+      </h1>
+
+      <div class="hero-title-wrapper">
+        <span id="typewriter"
+              data-words='["Machine Learning Engineer", "Computer Vision Engineer", "Data Science Enthusiast", "Deep Learning Developer", "AI Problem Solver"]'>
+        </span>
+      </div>
+
+      <p class="hero-description">
+        I help businesses unlock the true potential of their data by delivering end-to-end intelligent solutions.
+        Specializing in deep Exploratory Data Analysis (EDA), dynamic Data Visualization, and robust Machine Learning & Deep Learning architectures, I turn complex raw data into actionable, scalable AI products.
+      </p>
+
+      <div class="hero-buttons">
+        <div class="magnetic-btn">
+          <a href="#projects" class="btn btn-primary">
+            <span>🚀</span> View My Work
+          </a>
+        </div>
+        <div class="magnetic-btn">
+          <a href="#contact" class="btn btn-outline">
+            <span>💬</span> Get In Touch
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-indicator">
+      <div class="scroll-mouse">
+        <div class="scroll-dot"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="about">
+    <div class="container">
+      <div class="about-grid animate-on-scroll">
+        <!-- Left: Image -->
+        <div class="about-image-wrapper animate-from-left animate-on-scroll">
+          <div class="about-image-container">
+            <img src="assets/me.png" alt="Ahmed Amr — ML & Computer Vision Engineer" loading="lazy">
+          </div>
+          <div class="about-float-card">
+            <div class="icon">🎓</div>
+            <div>
+              <div class="label">Status</div>
+              <div class="value">Final-Year CS Student</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Content -->
+        <div class="about-content animate-from-right animate-on-scroll">
+          <div class="section-label">About Me</div>
+          <h2 class="about-title">Turning Data Into<br><span class="gradient-text">Intelligent Solutions</span></h2>
+          <p class="about-text">
+            I'm Ahmed Amr — a final-year Computer Science student at Modern Academy Maadi,
+            I don't just train models — I obsess over the full pipeline. From cleaning messy
+            real-world datasets to deploying production-ready models, every step matters.
+            My recent graduation project, <strong>Axon</strong>, classifies Alzheimer's Disease stages from
+            brain MRI scans at 93.2% accuracy — trained on 33K+ images and deployed live on Hugging Face.
+          </p>
+          <p class="about-text">
+            What sets me apart is that I build things people actually use. Whether it's a
+            440K-record churn prediction system or a food classifier live on Hugging Face,
+            I care about impact over theory. I'm currently in my final year at Modern Academy Maadi,
+            actively looking for roles where I can own problems end-to-end.
+          </p>
+
+          <div class="about-highlights">
+            <div class="about-highlight-item">
+              <span class="check">✦</span> End-to-End ML Pipelines
+            </div>
+            <div class="about-highlight-item">
+              <span class="check">✦</span> Medical AI & MRI Classification
+            </div>
+            <div class="about-highlight-item">
+              <span class="check">✦</span> Exploratory Data Analysis (EDA)
+            </div>
+            <div class="about-highlight-item">
+              <span class="check">✦</span> Production Model Deployment
+            </div>
+            <div class="about-highlight-item">
+              <span class="check">✦</span> REST APIs & System Integration
+            </div>
+            <div class="about-highlight-item">
+              <span class="check">✦</span> Research & Paper Publication
+            </div>
+          </div>
+
+          <div class="about-buttons">
+            <a href="#contact" class="btn btn-primary">
+              <span>📄</span> Download CV
+            </a>
+            <a href="#projects" class="btn btn-outline">
+              <span>👁️</span> View Projects
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-container animate-on-scroll">
+        <div class="stat-card stagger-child">
+          <div class="stat-icon">🚀</div>
+          <div class="counter" data-target="3" data-suffix="+">0</div>
+          <div class="stat-label">AI Projects</div>
+        </div>
+        <div class="stat-card stagger-child">
+          <div class="stat-icon">📜</div>
+          <div class="counter" data-target="1" data-suffix="">0</div>
+          <div class="stat-label">Certification</div>
+        </div>
+        <div class="stat-card stagger-child">
+          <div class="stat-icon">🏢</div>
+          <div class="counter" data-target="1" data-suffix="">0</div>
+          <div class="stat-label">Internship</div>
+        </div>
+        <div class="stat-card stagger-child">
+          <div class="stat-icon">☕</div>
+          <div class="counter" data-target="1500" data-suffix="+">0</div>
+          <div class="stat-label">Cups of Coffee</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Tech Marquee Ticker ═══ -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <div class="marquee-item"><span class="marquee-dot"></span> Python</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> PyTorch</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Scikit-learn</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> OpenCV</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> YOLO</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> U-Net</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> NumPy</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Pandas</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Matplotlib</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Flask</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Docker</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> SQL</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> SciPy</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Git & GitHub</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Object Detection</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Image Segmentation</div>
+      <!-- Duplicate for seamless loop -->
+      <div class="marquee-item"><span class="marquee-dot"></span> Python</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> PyTorch</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Scikit-learn</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> OpenCV</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> YOLO</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> U-Net</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> NumPy</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Pandas</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Matplotlib</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Flask</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Docker</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> SQL</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> SciPy</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Git & GitHub</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Object Detection</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Image Segmentation</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 3: SKILLS
+       ═══════════════════════════════════════════════════════════════ -->
+  <section id="skills" class="skills-section animate-on-scroll">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Expertise</div>
+        <h2 class="section-title">Skills & <span class="gradient-text">Technologies</span></h2>
+        <p class="section-subtitle">My technical toolkit built through hands-on projects and continuous learning</p>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Skill 1: AI & Computer Vision -->
+        <div class="skill-card tilt-card stagger-child">
+          <div class="skill-ring">
+            <svg viewBox="0 0 120 120">
+              <circle class="skill-ring-bg" cx="60" cy="60" r="54"/>
+              <circle class="skill-ring-progress" cx="60" cy="60" r="54" data-percent="90"/>
+            </svg>
+            <span class="skill-percent">90%</span>
+          </div>
+          <h3 class="skill-name">AI & Computer Vision</h3>
+          <p class="skill-description">Object detection, image segmentation, and deep learning model development</p>
+          <div class="skill-tags">
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">OpenCV</span>
+            <span class="skill-tag">YOLO</span>
+            <span class="skill-tag">U-Net</span>
+          </div>
+        </div>
+
+        <!-- Skill 2: Data Science & Analysis -->
+        <div class="skill-card tilt-card stagger-child">
+          <div class="skill-ring">
+            <svg viewBox="0 0 120 120">
+              <circle class="skill-ring-bg" cx="60" cy="60" r="54"/>
+              <circle class="skill-ring-progress" cx="60" cy="60" r="54" data-percent="88"/>
+            </svg>
+            <span class="skill-percent">88%</span>
+          </div>
+          <h3 class="skill-name">Data Science & Analysis</h3>
+          <p class="skill-description">Data exploration, statistical analysis, feature engineering, and ML model training</p>
+          <div class="skill-tags">
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">Scikit-learn</span>
+            <span class="skill-tag">Matplotlib</span>
+          </div>
+        </div>
+
+        <!-- Skill 3: Programming & Databases -->
+        <div class="skill-card tilt-card stagger-child">
+          <div class="skill-ring">
+            <svg viewBox="0 0 120 120">
+              <circle class="skill-ring-bg" cx="60" cy="60" r="54"/>
+              <circle class="skill-ring-progress" cx="60" cy="60" r="54" data-percent="85"/>
+            </svg>
+            <span class="skill-percent">85%</span>
+          </div>
+          <h3 class="skill-name">Programming & Databases</h3>
+          <p class="skill-description">Clean Python code, SQL databases, and algorithm implementation from scratch</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">SciPy</span>
+            <span class="skill-tag">OOP</span>
+          </div>
+        </div>
+
+        <!-- Skill 4: Backend & Tools -->
+        <div class="skill-card tilt-card stagger-child">
+          <div class="skill-ring">
+            <svg viewBox="0 0 120 120">
+              <circle class="skill-ring-bg" cx="60" cy="60" r="54"/>
+              <circle class="skill-ring-progress" cx="60" cy="60" r="54" data-percent="78"/>
+            </svg>
+            <span class="skill-percent">78%</span>
+          </div>
+          <h3 class="skill-name">Backend & DevOps Tools</h3>
+          <p class="skill-description">API development, containerization, version control, and deployment</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Flask</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">GitHub</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 4: INTERNSHIP
+       ═══════════════════════════════════════════════════════════════ -->
+  <section id="internship">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-label">Training</div>
+        <h2 class="section-title">Internship <span class="gradient-text">Experience</span></h2>
+        <p class="section-subtitle">Hands-on training that shaped my practical AI skills</p>
+      </div>
+
+      <div class="education-cards animate-on-scroll" style="max-width: 700px;">
+        <div class="education-card stagger-child tilt-card" style="grid-column: 1 / -1;">
+          <div class="education-icon">🏢</div>
+          <h3 class="education-degree">Data Science & Machine Learning Intern</h3>
+          <p class="education-school">IT-Gate Academy, Cairo</p>
+          <p class="education-date">2023 — 2024</p>
+          <p class="education-details">
+            Completed an intensive training program focused on Data Science fundamentals and practical machine learning.
+            Gained hands-on experience in exploratory data analysis (EDA), data preprocessing, feature engineering,
+            and building & evaluating ML models. Worked on real-world datasets and learned to extract actionable
+            insights from raw data using Python and its scientific ecosystem.
+          </p>
+          <div class="skill-tags" style="margin-top: 16px; justify-content: flex-start;">
+            <span class="skill-tag">Data Science</span>
+            <span class="skill-tag">EDA</span>
+            <span class="skill-tag">Model Training</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Pandas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 5: EDUCATION
+       ═══════════════════════════════════════════════════════════════ -->
+  <section id="education">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-label">Academic Background</div>
+        <h2 class="section-title">My <span class="gradient-text">Education</span></h2>
+        <p class="section-subtitle">Building strong foundations in computer science and artificial intelligence</p>
+      </div>
+
+      <div class="education-cards animate-on-scroll" style="max-width: 700px;">
+        <div class="education-card stagger-child tilt-card" style="grid-column: 1 / -1;">
+          <div class="education-icon">🎓</div>
+          <h3 class="education-degree">Bachelor of Computer Science</h3>
+          <p class="education-school">Modern Academy Maadi, Cairo, Egypt</p>
+          <p class="education-date">September 2022 — Present (Final Year)</p>
+          <p class="education-details">
+            Specializing in Artificial Intelligence and Machine Learning. Studying core CS fundamentals
+            alongside advanced topics in Deep Learning, Computer Vision, Data Structures & Algorithms,
+            Databases, and Software Engineering.
+          </p>
+          <span class="education-gpa">🎯 Final Year — AI Specialization</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 6: PROJECTS
+       ═══════════════════════════════════════════════════════════════ -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-label">Portfolio</div>
+        <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+        <p class="section-subtitle">Real AI solutions I've designed, built, and deployed</p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="project-filters animate-on-scroll">
+        <button class="filter-btn active" data-filter="all"><span>All Projects</span></button>
+        <button class="filter-btn" data-filter="ml"><span>Machine Learning</span></button>
+        <button class="filter-btn" data-filter="cv"><span>Computer Vision</span></button>
+      </div>
+
+      <div class="projects-grid animate-on-scroll" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); max-width: 1100px; margin: 0 auto;">
+
+        <!-- Project 0: Axon Alzheimer Detection -->
+        <div class="project-card stagger-child spotlight-card shimmer-card" data-category="cv">
+          <div class="card-spotlight"></div>
+          <div class="project-image">
+            <div class="project-image-bg gradient-bg-3">🧠</div>
+            <div class="project-overlay">
+              <a href="https://github.com/ahmedamr022/Axon-Alzheimers-Detection" class="project-overlay-btn" title="GitHub" target="_blank">💻</a>
+              <a href="https://huggingface.co/spaces/BoTahex/axon-alzheimer-detection" class="project-overlay-btn" title="Live Demo" target="_blank">🔗</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-category-tag" style="background: rgba(124,58,237,0.1); color: #c4b5fd;">Deep Learning</span>
+            <h3 class="project-name">Axon: Alzheimer's Detection</h3>
+            <p class="project-desc">
+              Custom CNN model trained on 33,984 augmented MRI scans to classify 4 stages of Alzheimer's Disease
+              with 93.2% accuracy and 99% precision on severe cases. Deployed live on Hugging Face Spaces.
+            </p>
+            <div class="project-tech-stack">
+              <span class="project-tech">TensorFlow</span>
+              <span class="project-tech">Keras</span>
+              <span class="project-tech">OpenCV</span>
+              <span class="project-tech">Gradio</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 1: Customer Churn Prediction -->
+        <div class="project-card stagger-child spotlight-card shimmer-card" data-category="ml">
+          <div class="card-spotlight"></div>
+          <div class="project-image">
+            <div class="project-image-bg gradient-bg-1">📊</div>
+            <div class="project-overlay">
+              <a href="https://github.com/ahmedamr022/Customer-Churn-Prediction" class="project-overlay-btn" title="GitHub" target="_blank">💻</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-category-tag">Machine Learning</span>
+            <h3 class="project-name">Customer Churn Prediction</h3>
+            <p class="project-desc">
+              Built 6 ML models (both built-in and from scratch) to predict customer churn
+              on 440K records. Best performing model: Random Forest achieving 93% accuracy.
+              Includes full EDA, feature engineering, and model comparison.
+            </p>
+            <div class="project-tech-stack">
+              <span class="project-tech">Python</span>
+              <span class="project-tech">Scikit-learn</span>
+              <span class="project-tech">Pandas</span>
+              <span class="project-tech">Random Forest</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Food Image Classifier -->
+        <div class="project-card stagger-child spotlight-card shimmer-card" data-category="cv">
+          <div class="card-spotlight"></div>
+          <div class="project-image">
+            <div class="project-image-bg gradient-bg-5">🍔</div>
+            <div class="project-overlay">
+              <a href="https://github.com/ahmedamr022/Food-Classification" class="project-overlay-btn" title="GitHub" target="_blank">💻</a>
+              <a href="https://huggingface.co/spaces/BoTahex/food-image-classifier" class="project-overlay-btn" title="Live Demo" target="_blank">🔗</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-category-tag">Computer Vision</span>
+            <h3 class="project-name">Food Image Classifier</h3>
+            <p class="project-desc">
+              Fine-tuned ResNet50 on the Food-101 dataset (101K images, 101 classes) to classify
+              food from images and estimate calories. Successfully deployed as an interactive
+              web application on Hugging Face Spaces.
+            </p>
+            <div class="project-tech-stack">
+              <span class="project-tech">PyTorch</span>
+              <span class="project-tech">ResNet50</span>
+              <span class="project-tech">Hugging Face</span>
+              <span class="project-tech">Transfer Learning</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 7: CERTIFICATIONS
+       ═══════════════════════════════════════════════════════════════ -->
+  <section id="certifications">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-label">Credentials</div>
+        <h2 class="section-title">Certifications & <span class="gradient-text">Credentials</span></h2>
+        <p class="section-subtitle">Professional certifications validating my technical skills</p>
+      </div>
+
+      <div class="certifications-grid animate-on-scroll" style="max-width: 900px;">
+        <div class="cert-card stagger-child tilt-card">
+          <div class="cert-icon">📊</div>
+          <div class="cert-info">
+            <h3 class="cert-name">Statistics 101</h3>
+            <p class="cert-issuer">Cognitive Class</p>
+            <p class="cert-date">November 2025</p>
+            <a href="https://courses.cognitiveclass.ai/certificates/87cf4d26b0d145d291c5b5f58b766a7b" class="cert-link" target="_blank">View Credential →</a>
+          </div>
+        </div>
+        <div class="cert-card stagger-child tilt-card">
+          <div class="cert-icon">🐍</div>
+          <div class="cert-info">
+            <h3 class="cert-name">Python</h3>
+            <p class="cert-issuer">freeCodeCamp</p>
+            <p class="cert-date">March 2026</p>
+            <a href="https://www.freecodecamp.org/certification/ahmedamr21/python-v9" class="cert-link" target="_blank">View Credential →</a>
+          </div>
+        </div>
+        <div class="cert-card stagger-child tilt-card">
+          <div class="cert-icon">📈</div>
+          <div class="cert-info">
+            <h3 class="cert-name">Data Analysis with Excel Pivot Tables</h3>
+            <p class="cert-issuer">365 Data Science</p>
+            <p class="cert-date">November 2025</p>
+            <a href="https://learn.365datascience.com/certificates/CC-A20A705028/" class="cert-link" target="_blank">View Credential →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 8: CONTACT
+       ═══════════════════════════════════════════════════════════════ -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">Let's Build <span class="gradient-text">Something Great</span></h2>
+        <p class="section-subtitle">Interested in collaborating or have an opportunity? I'd love to hear from you</p>
+      </div>
+
+      <div class="contact-grid animate-on-scroll">
+        <!-- Left: Contact Info -->
+        <div class="contact-info">
+          <p class="contact-text">
+            I'm a final-year CS student actively looking for opportunities in Machine Learning
+            and Computer Vision. Whether you have a project idea, an internship, a full-time role,
+            or just want to talk AI — my inbox is always open.
+          </p>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">📧</div>
+            <div>
+              <p class="contact-item-label">Email</p>
+              <p class="contact-item-value">ahmedamr021222@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">📱</div>
+            <div>
+              <p class="contact-item-label">Phone</p>
+              <p class="contact-item-value">+20 111 139 3711</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <p class="contact-item-label">Location</p>
+              <p class="contact-item-value">Cairo, Egypt</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">🕐</div>
+            <div>
+              <p class="contact-item-label">Timezone</p>
+              <p class="contact-item-value">GMT+2 (EET)</p>
+            </div>
+          </div>
+
+          <div class="contact-socials">
+            <a href="https://github.com/ahmedamr022" class="social-link" target="_blank" title="GitHub">💻</a>
+            <a href="https://www.linkedin.com/in/ahmed-amr-13040227b/" class="social-link" target="_blank" title="LinkedIn">🔗</a>
+            <a href="https://www.kaggle.com/ahmedamr0222" class="social-link" target="_blank" title="Kaggle">📊</a>
+            <a href="mailto:ahmedamr021222@gmail.com" class="social-link" title="Email">📧</a>
+          </div>
+        </div>
+
+        <!-- Right: Contact Form -->
+        <div class="contact-form-wrapper">
+          <form id="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="name">Your Name</label>
+                <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">Your Email</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" class="form-input" placeholder="Job Opportunity / Collaboration">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message">Message</label>
+              <textarea id="message" name="message" class="form-textarea" placeholder="Tell me about the opportunity or project..." required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">
+              <span class="btn-text">🚀 Send Message</span>
+              <span class="btn-loader"></span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="#hero" class="footer-logo">&lt;Ahmed /&gt;</a>
+        <p class="footer-text">
+          © 2025 Ahmed Amr. Crafted with 🧠 and ☕
+        </p>
+        <div class="footer-links">
+          <a href="https://github.com/ahmedamr022" class="footer-link" target="_blank">GitHub</a>
+          <a href="https://www.linkedin.com/in/ahmed-amr-13040227b/" class="footer-link" target="_blank">LinkedIn</a>
+          <a href="https://www.kaggle.com/ahmedamr0222" class="footer-link" target="_blank">Kaggle</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ Back to Top Button ═══ -->
+  <button id="back-to-top" aria-label="Back to top">↑</button>
+
+  <!-- ═══ Scripts ═══ -->
+  <script src="js/particles.js"></script>
+  <script src="js/typewriter.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahmed Amr — CV</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: #1a1a2e;
+      background: #fff;
+      font-size: 10.5pt;
+      line-height: 1.5;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 28px 36px;
+      background: #fff;
+    }
+
+    /* ═══ HEADER ═══ */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 14px;
+      border-bottom: 2.5px solid #6c3aed;
+      margin-bottom: 16px;
+    }
+
+    .header-left h1 {
+      font-size: 22pt;
+      font-weight: 700;
+      color: #1a1a2e;
+      letter-spacing: -0.5px;
+    }
+
+    .header-left .subtitle {
+      font-size: 11pt;
+      font-weight: 600;
+      color: #6c3aed;
+      margin-top: 2px;
+    }
+
+    .header-right {
+      text-align: right;
+      font-size: 9pt;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    .header-right a {
+      color: #6c3aed;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* ═══ SECTIONS ═══ */
+    .section {
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 11pt;
+      font-weight: 700;
+      color: #6c3aed;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding-bottom: 4px;
+      border-bottom: 1.5px solid #e8e0ff;
+      margin-bottom: 8px;
+    }
+
+    /* ═══ PROFILE ═══ */
+    .profile-text {
+      font-size: 10pt;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* ═══ ENTRIES (Experience, Education, Projects) ═══ */
+    .entry {
+      margin-bottom: 10px;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .entry-title {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+
+    .entry-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5pt;
+      color: #888;
+      white-space: nowrap;
+    }
+
+    .entry-subtitle {
+      font-size: 9.5pt;
+      color: #6c3aed;
+      font-weight: 600;
+      margin-top: 1px;
+    }
+
+    .entry-link {
+      font-size: 8.5pt;
+      color: #6c3aed;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .entry-body {
+      margin-top: 4px;
+    }
+
+    .entry-body ul {
+      padding-left: 16px;
+    }
+
+    .entry-body li {
+      font-size: 9.5pt;
+      color: #444;
+      margin-bottom: 2px;
+      line-height: 1.5;
+    }
+
+    .entry-body li strong {
+      color: #1a1a2e;
+    }
+
+    /* ═══ SKILLS ═══ */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 24px;
+    }
+
+    .skill-row {
+      display: flex;
+      gap: 6px;
+      font-size: 9.5pt;
+    }
+
+    .skill-label {
+      font-weight: 700;
+      color: #1a1a2e;
+      white-space: nowrap;
+    }
+
+    .skill-value {
+      color: #555;
+    }
+
+    /* ═══ CERTS ═══ */
+    .cert-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 9.5pt;
+      margin-bottom: 3px;
+    }
+
+    .cert-name {
+      font-weight: 600;
+      color: #1a1a2e;
+    }
+
+    .cert-issuer {
+      color: #6c3aed;
+      font-weight: 500;
+    }
+
+    .cert-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5pt;
+      color: #888;
+    }
+
+    /* ═══ TAGS ═══ */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 4px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 1px 7px;
+      background: #f3efff;
+      color: #6c3aed;
+      border-radius: 3px;
+      font-size: 8pt;
+      font-weight: 600;
+    }
+
+    /* ═══ PRINT ═══ */
+    @media print {
+      body { background: #fff; }
+      .page { padding: 24px 32px; }
+      .no-print { display: none; }
+    }
+
+    /* ═══ Print Button (screen only) ═══ */
+    .print-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      padding: 12px 28px;
+      background: #6c3aed;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(108,58,237,0.4);
+      z-index: 999;
+    }
+
+    .print-btn:hover { background: #5b2fd4; }
+
+    @media print { .print-btn { display: none; } }
+  </style>
+</head>
+<body>
+
+  <button class="print-btn" onclick="window.print()">📄 Save as PDF</button>
+
+  <div class="page">
+
+    <!-- ═══ HEADER ═══ -->
+    <div class="header">
+      <div class="header-left">
+        <h1>Ahmed Amr</h1>
+        <div class="subtitle">Machine Learning & Computer Vision Engineer</div>
+      </div>
+      <div class="header-right">
+        ahmedamr021222@gmail.com • +20 111 139 3711<br>
+        Cairo, Egypt<br>
+        <a href="https://www.linkedin.com/in/ahmed-amr-13040227b/">LinkedIn</a> •
+        <a href="https://github.com/ahmedamr022">GitHub</a> •
+        <a href="https://www.kaggle.com/ahmedamr0222">Kaggle</a>
+      </div>
+    </div>
+
+    <!-- ═══ PROFILE ═══ -->
+    <div class="section">
+      <div class="section-title">Profile</div>
+      <p class="profile-text">
+        I help businesses unlock the true potential of their data by delivering end-to-end intelligent solutions.
+        Specializing in deep Exploratory Data Analysis (EDA), dynamic Data Visualization, and robust Machine Learning
+        & Deep Learning architectures, I turn complex raw data into actionable, scalable AI products. Final-year
+        Computer Science student skilled in Python, PyTorch, TensorFlow, and OpenCV.
+      </p>
+    </div>
+
+    <!-- ═══ PROJECTS ═══ -->
+    <div class="section">
+      <div class="section-title">Projects</div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">Axon: End-to-End Alzheimer's Detection System</span>
+          <span class="entry-date">Jan 2026 — Apr 2026</span>
+        </div>
+        <a href="https://github.com/ahmedamr022/Graduation_Project" class="entry-link">GitHub</a> •
+        <a href="https://huggingface.co/spaces/BoTahex/axon-alzheimer-detection" class="entry-link">Live Demo</a>
+        <div class="entry-body">
+          <ul>
+            <li>Designed and developed an end-to-end medical AI solution classifying brain MRI scans into <strong>4 stages of Alzheimer's Disease</strong> with <strong>93.2% accuracy</strong>.</li>
+            <li>Engineered a custom <strong>CNN architecture</strong> using TensorFlow/Keras, trained on <strong>33,984 augmented MRI images</strong> with BatchNorm, Dropout, and MobileNetV2 normalisation.</li>
+            <li>Achieved <strong>99% precision/recall</strong> on Moderate Demented cases, critical for urgent medical intervention.</li>
+            <li>Built a <strong>Flask REST API</strong> for real-time inference and integrated it with a <strong>Flutter mobile application</strong>.</li>
+            <li>Deployed the model to <strong>Hugging Face Spaces</strong> using Gradio for public accessibility.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">TensorFlow</span>
+            <span class="tag">Keras</span>
+            <span class="tag">CNN</span>
+            <span class="tag">Flask</span>
+            <span class="tag">Flutter</span>
+            <span class="tag">Gradio</span>
+            <span class="tag">Hugging Face</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">Customer Churn Prediction</span>
+          <span class="entry-date">Apr 2026</span>
+        </div>
+        <a href="https://github.com/ahmedamr022/Customer-Churn-Prediction" class="entry-link">GitHub</a>
+        <div class="entry-body">
+          <ul>
+            <li>Built <strong>6 ML models</strong> (both built-in and from scratch) to predict customer churn on <strong>440K records</strong>.</li>
+            <li>Conducted deep <strong>EDA</strong> and feature engineering. Best model: Random Forest at <strong>93% accuracy</strong>.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">Random Forest</span>
+            <span class="tag">EDA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">Food Image Classifier</span>
+          <span class="entry-date">May 2026</span>
+        </div>
+        <a href="https://github.com/ahmedamr022/Food-Classification" class="entry-link">GitHub</a> •
+        <a href="https://huggingface.co/spaces/BoTahex/food-image-classifier" class="entry-link">Live Demo</a>
+        <div class="entry-body">
+          <ul>
+            <li>Fine-tuned <strong>ResNet50</strong> on the Food-101 dataset (<strong>101K images, 101 classes</strong>) for food classification and calorie estimation.</li>
+            <li>Deployed as an interactive web app on <strong>Hugging Face Spaces</strong>.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">PyTorch</span>
+            <span class="tag">ResNet50</span>
+            <span class="tag">Transfer Learning</span>
+            <span class="tag">Hugging Face</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ SKILLS ═══ -->
+    <div class="section">
+      <div class="section-title">Skills</div>
+      <div class="skills-grid">
+        <div class="skill-row">
+          <span class="skill-label">Data Science & Analysis:</span>
+          <span class="skill-value">EDA, NumPy, Pandas, SciPy, Scikit-learn, Matplotlib</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">AI & Computer Vision:</span>
+          <span class="skill-value">PyTorch, TensorFlow, Keras, OpenCV, YOLO, U-Net</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Programming & Databases:</span>
+          <span class="skill-value">Python, SQL, OOP</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Backend & Tools:</span>
+          <span class="skill-value">Flask, REST APIs, Docker, Git, GitHub</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ INTERNSHIP ═══ -->
+    <div class="section">
+      <div class="section-title">Internship</div>
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">Data Science & Machine Learning Intern</span>
+          <span class="entry-date">2023 — 2024</span>
+        </div>
+        <div class="entry-subtitle">IT-Gate Academy, Cairo</div>
+        <div class="entry-body">
+          <ul>
+            <li>Completed intensive training in <strong>Data Science</strong> fundamentals and practical machine learning.</li>
+            <li>Gained hands-on experience in <strong>exploratory data analysis</strong>, data preprocessing, feature engineering, and building & evaluating ML models on real-world datasets.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ EDUCATION ═══ -->
+    <div class="section">
+      <div class="section-title">Education</div>
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">Bachelor of Computer Science</span>
+          <span class="entry-date">Sep 2022 — Present</span>
+        </div>
+        <div class="entry-subtitle">Modern Academy Maadi, Cairo, Egypt</div>
+        <div class="entry-body">
+          <ul>
+            <li>Specialization: Artificial Intelligence & Machine Learning (Final Year).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ CERTIFICATIONS ═══ -->
+    <div class="section">
+      <div class="section-title">Certifications</div>
+      <div class="cert-item">
+        <span><span class="cert-name">Statistics 101</span> — <span class="cert-issuer">Cognitive Class</span></span>
+        <span class="cert-date">Nov 2025</span>
+      </div>
+      <div class="cert-item">
+        <span><span class="cert-name">Data Analysis with Excel Pivot Tables</span> — <span class="cert-issuer">365 Data Science</span></span>
+        <span class="cert-date">Nov 2025</span>
+      </div>
+      <div class="cert-item">
+        <span><span class="cert-name">Scientific Computing with Python</span> — <span class="cert-issuer">freeCodeCamp</span></span>
+        <span class="cert-date">Mar 2026</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
