@@ -316,8 +316,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // ═══════════════════════════════════════════════════════════════════
 function initDynamicCounters() {
   const projectCount = document.querySelectorAll('.project-card').length;
-  const certCount = document.querySelectorAll('.achievement-card').length;
-  const internCount = document.querySelectorAll('.timeline-item').length;
+  const certCount = document.querySelectorAll('.cert-card').length;
+  const internCount = document.querySelectorAll('#experience .education-card, #experience .timeline-item').length;
 
   const countProjectsEl = document.getElementById('count-projects');
   const countCertsEl = document.getElementById('count-certs');
