@@ -312,9 +312,24 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ═══════════════════════════════════════════════════════════════════
-// COUNTER ANIMATION
+// COUNTER ANIMATION & DYNAMIC UPDATES
 // ═══════════════════════════════════════════════════════════════════
+function initDynamicCounters() {
+  const projectCount = document.querySelectorAll('.project-card').length;
+  const certCount = document.querySelectorAll('.achievement-card').length;
+  const internCount = document.querySelectorAll('.timeline-item').length;
+
+  const countProjectsEl = document.getElementById('count-projects');
+  const countCertsEl = document.getElementById('count-certs');
+  const countInternsEl = document.getElementById('count-interns');
+
+  if (countProjectsEl && projectCount > 0) countProjectsEl.dataset.target = projectCount;
+  if (countCertsEl && certCount > 0) countCertsEl.dataset.target = certCount;
+  if (countInternsEl && internCount > 0) countInternsEl.dataset.target = internCount;
+}
+
 function animateCounters(container) {
+  initDynamicCounters();
   const counters = container.querySelectorAll('.counter');
   counters.forEach(counter => {
     if (counter.dataset.animated) return;
