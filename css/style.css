@@ -2348,6 +2348,10 @@ section {
 }
 
 @media (max-width: 480px) {
+  section { padding: 50px 0; }
+  .container { padding: 0 16px; }
+  .section-title { font-size: 2rem; }
+  .section-header { margin-bottom: 36px; }
   .hero-name { font-size: 2.5rem; letter-spacing: -2px; }
   .hero-title-wrapper { font-size: 1.1rem; }
   .hero-buttons { flex-direction: column; width: 100%; }
@@ -2358,6 +2362,9 @@ section {
   .skills-grid { grid-template-columns: 1fr; }
   .contact-form-wrapper { padding: 24px; }
   .about-float-card { right: 0; }
+  .timeline::before { left: 16px; }
+  .timeline-dot { left: 16px; width: 12px; height: 12px; transform: translateX(-50%) translateY(4px); }
+  .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { padding-left: 44px; }
 }
 
 /* ─── Gradient Backgrounds for Projects ────────────────────────── */
