@@ -2064,7 +2064,7 @@ section {
 .contact-item-label { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 2px; }
 .contact-item-value { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); }
 
-.contact-socials { display: flex; gap: 12px; margin-top: 12px; }
+.contact-socials { display: flex; justify-content: center; gap: 12px; margin-top: 12px; }
 
 .social-link {
   width: 48px;
