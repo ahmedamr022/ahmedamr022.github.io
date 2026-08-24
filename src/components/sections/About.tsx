@@ -2,6 +2,7 @@ import React from 'react';
 import { DownloadIcon, EyeIcon } from 'lucide-react';
 import { aboutHighlights, profile, stats } from '../../data/portfolio';
 import { useTheme } from '../../context/ThemeContext';
+import mePhoto from '../../assets/me.png';
 
 /* ═══════════ FLATICON VECTOR ICONS FOR ABOUT & STATS ═══════════ */
 
@@ -85,17 +86,16 @@ export function About(): JSX.Element {
           
           {/* Photo & Status Badge */}
           <div className="relative mx-auto w-full max-w-xs sm:max-w-sm lg:max-w-none">
-            <div className={`overflow-hidden rounded-3xl border transition-all duration-500 ${
+            <div className={`overflow-hidden rounded-3xl border transition-all duration-500 relative aspect-[4/5] ${
               theme === 'dark' 
-                ? 'border-white/[0.08] bg-[#070e24]/60 shadow-[0_20px_50px_rgba(0,0,0,0.8)]' 
+                ? 'border-white/[0.12] bg-[#070e24]/60 shadow-[0_20px_50px_rgba(0,0,0,0.8)]' 
                 : 'border-slate-200 bg-white shadow-[0_20px_40px_rgba(0,0,0,0.08)]'
             }`}>
               <img 
-                src={profile.photo} 
+                src={mePhoto} 
                 alt="Ahmed Amr" 
                 loading="lazy" 
-                className="h-full w-full object-cover min-h-[320px] sm:min-h-[380px]" 
-                onError={(e) => { (e.target as HTMLImageElement).style.opacity = '0'; }} 
+                className="h-full w-full object-cover object-top transition-transform duration-500 hover:scale-105" 
               />
             </div>
 
@@ -153,7 +153,7 @@ export function About(): JSX.Element {
           </div>
         </div>
 
-        {/* Stats Row with Flaticon Icons (2x2 Grid on Mobile) */}
+        {/* Stats Row with Flaticon Icons */}
         <div className="mt-14 sm:mt-20 grid gap-3.5 sm:gap-5 grid-cols-2 lg:grid-cols-4">
           {stats.map((s, idx) => {
             const StatIconComp = STAT_ICONS[idx] || StatBrainFlaticon;
