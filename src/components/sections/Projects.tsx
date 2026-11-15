@@ -63,6 +63,7 @@ const PROJECT_ICONS: Record<string, React.ComponentType<{ color: string }>> = {
 
 const FILTERS = [
   { id: 'all', label: 'All Projects' },
+  { id: 'fullstack', label: 'Full-Stack & AI' },
   { id: 'ml', label: 'Machine Learning' },
   { id: 'cv', label: 'Computer Vision' },
 ] as const;
@@ -115,60 +116,90 @@ export function Projects(): JSX.Element {
         <div className="mx-auto grid max-w-[1200px] gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {visible.map((p) => {
             const IconComp = PROJECT_ICONS[p.name] || BrainMriFlaticon;
+            const isFeatured = p.featured === true;
 
             return (
-              <article key={p.name} className="group glass-card flex flex-col overflow-hidden">
-                {/* Project Flaticon Vector Banner */}
-                <div className={`grid h-40 sm:h-48 place-items-center border-b transition-colors relative overflow-hidden ${
-                  theme === 'dark' ? 'border-white/[0.06] bg-gradient-to-b from-[#070e24] to-[#020512]' : 'border-slate-100 bg-gradient-to-b from-slate-50 to-white'
-                }`}>
-                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]" />
-                  <IconComp color={p.category === 'cv' ? '#38bdf8' : '#a855f7'} />
-                </div>
+              <article
+                key={p.name}
+                className={`group glass-card flex flex-col overflow-hidden ${
+                  isFeatured ? 'md:col-span-2 lg:col-span-3' : ''
+                }`}
+              >
+                {/* Banner: real screenshot for featured, SVG icon for others */}
+                {p.image ? (
+                  <div className="relative overflow-hidden h-56 sm:h-72 lg:h-80">
+                    {/* Featured badge */}
+                    <span className="absolute top-3 left-3 z-10 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-3 py-1 font-mono text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-white shadow-lg">
+                      ✦ Featured Project
+                    </span>
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    />
+                    {/* gradient overlay at bottom for text readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                  </div>
+                ) : (
+                  <div className={`grid h-40 sm:h-48 place-items-center border-b transition-colors relative overflow-hidden ${
+                    theme === 'dark' ? 'border-white/[0.06] bg-gradient-to-b from-[#070e24] to-[#020512]' : 'border-slate-100 bg-gradient-to-b from-slate-50 to-white'
+                  }`}>
+                    <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]" />
+                    <IconComp color={p.category === 'cv' ? '#38bdf8' : '#a855f7'} />
+                  </div>
+                )}
 
                 {/* Content Body */}
-                <div className="flex flex-1 flex-col p-5 sm:p-7">
-                  <span className="self-start rounded-full bg-cyan-500/10 border border-cyan-500/30 px-3 py-1 font-mono text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.14em] text-cyan-400 mb-2.5 sm:mb-3">
-                    {p.tag}
-                  </span>
+                <div className={`flex flex-1 flex-col p-5 sm:p-7 ${isFeatured ? 'lg:flex-row lg:gap-10' : ''}`}>
+                  <div className={`flex flex-col flex-1 ${isFeatured ? 'lg:max-w-2xl' : ''}`}>
+                    <span className="self-start rounded-full bg-cyan-500/10 border border-cyan-500/30 px-3 py-1 font-mono text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.14em] text-cyan-400 mb-2.5 sm:mb-3">
+                      {p.tag}
+                    </span>
 
-                  <h3 className={`text-lg sm:text-xl font-bold leading-snug tracking-tight ${theme === 'dark' ? 'text-white group-hover:text-cyan-300' : 'text-slate-900 group-hover:text-blue-600'}`}>
-                    {p.name}
-                  </h3>
+                    <h3 className={`font-bold leading-snug tracking-tight ${
+                      isFeatured ? 'text-xl sm:text-2xl' : 'text-lg sm:text-xl'
+                    } ${theme === 'dark' ? 'text-white group-hover:text-cyan-300' : 'text-slate-900 group-hover:text-blue-600'}`}>
+                      {p.name}
+                    </h3>
 
-                  <p className={`mt-2.5 sm:mt-3 text-xs sm:text-sm leading-relaxed ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}>
-                    {p.description}
-                  </p>
+                    <p className={`mt-2.5 sm:mt-3 leading-relaxed ${
+                      isFeatured ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'
+                    } ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}>
+                      {p.description}
+                    </p>
 
-                  {/* Tech Pills */}
-                  <div className="mt-4 sm:mt-5 flex flex-wrap gap-1.5 sm:gap-2">
-                    {p.tech.map((t) => (
-                      <span className="skill-tag" key={t}>{t}</span>
-                    ))}
+                    {/* Tech Pills */}
+                    <div className="mt-4 sm:mt-5 flex flex-wrap gap-1.5 sm:gap-2">
+                      {p.tech.map((t) => (
+                        <span className="skill-tag" key={t}>{t}</span>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Links */}
-                  <div className={`mt-auto flex items-center gap-5 pt-5 sm:pt-7 border-t ${
-                    theme === 'dark' ? 'border-white/[0.06]' : 'border-slate-100'
-                  }`}>
-                    <a 
-                      href={p.github} 
-                      target="_blank" 
-                      rel="noreferrer" 
+                  <div className={`flex items-center gap-5 pt-5 sm:pt-7 border-t mt-auto ${
+                    isFeatured ? 'lg:flex-col lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10 lg:mt-0 lg:justify-center lg:items-start' : ''
+                  } ${theme === 'dark' ? 'border-white/[0.06]' : 'border-slate-100'}`}>
+                    <a
+                      href={p.github}
+                      target="_blank"
+                      rel="noreferrer"
                       className={`inline-flex items-center gap-2 text-xs font-bold font-mono tracking-wide uppercase transition-colors ${
                         theme === 'dark' ? 'text-slate-400 hover:text-cyan-400' : 'text-slate-600 hover:text-blue-600'
                       }`}
                     >
-                      <GithubIcon size={16} /> Code
+                      <GithubIcon size={16} /> Source Code
                     </a>
                     {p.demo && (
-                      <a 
-                        href={p.demo} 
-                        target="_blank" 
-                        rel="noreferrer" 
-                        className="inline-flex items-center gap-2 text-xs font-bold font-mono tracking-wide uppercase text-cyan-400 hover:text-cyan-300 transition-colors"
+                      <a
+                        href={p.demo}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={`inline-flex items-center gap-2 font-bold font-mono tracking-wide uppercase transition-colors text-cyan-400 hover:text-cyan-300 ${
+                          isFeatured ? 'text-sm px-5 py-2.5 rounded-full border border-cyan-500/40 bg-cyan-500/10 hover:bg-cyan-500/20' : 'text-xs'
+                        }`}
                       >
-                        <ExternalLinkIcon size={16} /> Live Demo
+                        <ExternalLinkIcon size={isFeatured ? 18 : 16} /> Live Demo →
                       </a>
                     )}
                   </div>

@@ -69,16 +69,31 @@ export const skillCategories = [
 
 export type Project = {
   emoji: string;
-  category: 'ml' | 'cv';
+  category: 'ml' | 'cv' | 'fullstack';
   tag: string;
   name: string;
   description: string;
   tech: string[];
   github: string;
   demo?: string;
+  image?: string;
+  featured?: boolean;
 };
 
 export const projects: Project[] = [
+{
+  emoji: '🏢',
+  category: 'fullstack',
+  tag: 'AI Platform',
+  name: '3watly — Egyptian Career Intelligence Platform',
+  description:
+    'Full-stack AI-powered career platform for the Egyptian tech job market. Scrapes and indexes real job postings from Wuzzuf, matches candidates with AI, audits CVs against ATS criteria, analyzes skill gaps, and provides real-time Egyptian market insights. Features an AI Career Copilot specialized in the Egyptian tech landscape.',
+  tech: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'Python', 'NLP'],
+  github: 'https://github.com/ahmedamr022/3watly',
+  demo: 'https://3watly.vercel.app/',
+  image: '3watly-hero.png',
+  featured: true,
+},
 {
   emoji: '🧠',
   category: 'cv',
