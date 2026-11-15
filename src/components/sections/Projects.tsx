@@ -125,24 +125,26 @@ export function Projects(): JSX.Element {
                   isFeatured ? 'md:col-span-2 lg:col-span-3' : ''
                 }`}
               >
-                {/* Banner: real screenshot for featured, SVG icon for others */}
+                {/* Banner */}
                 {p.image ? (
-                  <div className="relative overflow-hidden h-56 sm:h-72 lg:h-80">
-                    {/* Featured badge */}
-                    <span className="absolute top-3 left-3 z-10 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-3 py-1 font-mono text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-white shadow-lg">
-                      ✦ Featured Project
+                  /* ── Featured: real screenshot ── */
+                  <div className="relative overflow-hidden rounded-t-xl" style={{ height: isFeatured ? '340px' : '200px' }}>
+                    <span className="absolute top-3 left-3 z-10 flex items-center gap-1.5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-3 py-1 font-mono text-[9px] font-bold uppercase tracking-widest text-white shadow-lg">
+                      ✦ Featured
                     </span>
                     <img
                       src={p.image}
                       alt={p.name}
-                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
                     />
-                    {/* gradient overlay at bottom for text readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent pointer-events-none" />
                   </div>
                 ) : (
+                  /* ── Other projects: SVG icon banner ── */
                   <div className={`grid h-40 sm:h-48 place-items-center border-b transition-colors relative overflow-hidden ${
-                    theme === 'dark' ? 'border-white/[0.06] bg-gradient-to-b from-[#070e24] to-[#020512]' : 'border-slate-100 bg-gradient-to-b from-slate-50 to-white'
+                    theme === 'dark'
+                      ? 'border-white/[0.06] bg-gradient-to-b from-[#070e24] to-[#020512]'
+                      : 'border-slate-100 bg-gradient-to-b from-slate-50 to-white'
                   }`}>
                     <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]" />
                     <IconComp color={p.category === 'cv' ? '#38bdf8' : '#a855f7'} />
@@ -150,59 +152,86 @@ export function Projects(): JSX.Element {
                 )}
 
                 {/* Content Body */}
-                <div className={`flex flex-1 flex-col p-5 sm:p-7 ${isFeatured ? 'lg:flex-row lg:gap-10' : ''}`}>
-                  <div className={`flex flex-col flex-1 ${isFeatured ? 'lg:max-w-2xl' : ''}`}>
-                    <span className="self-start rounded-full bg-cyan-500/10 border border-cyan-500/30 px-3 py-1 font-mono text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.14em] text-cyan-400 mb-2.5 sm:mb-3">
+                <div className="flex flex-1 flex-col p-5 sm:p-7">
+
+                  {/* Top row: tag + links side by side for featured */}
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <span className="rounded-full bg-cyan-500/10 border border-cyan-500/30 px-3 py-1 font-mono text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.14em] text-cyan-400">
                       {p.tag}
                     </span>
-
-                    <h3 className={`font-bold leading-snug tracking-tight ${
-                      isFeatured ? 'text-xl sm:text-2xl' : 'text-lg sm:text-xl'
-                    } ${theme === 'dark' ? 'text-white group-hover:text-cyan-300' : 'text-slate-900 group-hover:text-blue-600'}`}>
-                      {p.name}
-                    </h3>
-
-                    <p className={`mt-2.5 sm:mt-3 leading-relaxed ${
-                      isFeatured ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'
-                    } ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}>
-                      {p.description}
-                    </p>
-
-                    {/* Tech Pills */}
-                    <div className="mt-4 sm:mt-5 flex flex-wrap gap-1.5 sm:gap-2">
-                      {p.tech.map((t) => (
-                        <span className="skill-tag" key={t}>{t}</span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Links */}
-                  <div className={`flex items-center gap-5 pt-5 sm:pt-7 border-t mt-auto ${
-                    isFeatured ? 'lg:flex-col lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10 lg:mt-0 lg:justify-center lg:items-start' : ''
-                  } ${theme === 'dark' ? 'border-white/[0.06]' : 'border-slate-100'}`}>
-                    <a
-                      href={p.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className={`inline-flex items-center gap-2 text-xs font-bold font-mono tracking-wide uppercase transition-colors ${
-                        theme === 'dark' ? 'text-slate-400 hover:text-cyan-400' : 'text-slate-600 hover:text-blue-600'
-                      }`}
-                    >
-                      <GithubIcon size={16} /> Source Code
-                    </a>
-                    {p.demo && (
-                      <a
-                        href={p.demo}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={`inline-flex items-center gap-2 font-bold font-mono tracking-wide uppercase transition-colors text-cyan-400 hover:text-cyan-300 ${
-                          isFeatured ? 'text-sm px-5 py-2.5 rounded-full border border-cyan-500/40 bg-cyan-500/10 hover:bg-cyan-500/20' : 'text-xs'
-                        }`}
-                      >
-                        <ExternalLinkIcon size={isFeatured ? 18 : 16} /> Live Demo →
-                      </a>
+                    {/* links pinned top-right for featured */}
+                    {isFeatured && (
+                      <div className="flex items-center gap-3 shrink-0">
+                        <a
+                          href={p.github}
+                          target="_blank"
+                          rel="noreferrer"
+                          className={`inline-flex items-center gap-1.5 text-[10px] font-bold font-mono tracking-wide uppercase transition-colors ${
+                            theme === 'dark' ? 'text-slate-400 hover:text-cyan-400' : 'text-slate-500 hover:text-blue-600'
+                          }`}
+                        >
+                          <GithubIcon size={13} /> Code
+                        </a>
+                        {p.demo && (
+                          <a
+                            href={p.demo}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-1.5 text-[10px] font-bold font-mono tracking-wide uppercase rounded-full border border-cyan-500/40 bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 hover:text-cyan-300 transition-colors px-3 py-1"
+                          >
+                            <ExternalLinkIcon size={12} /> Live Demo
+                          </a>
+                        )}
+                      </div>
                     )}
                   </div>
+
+                  <h3 className={`font-bold leading-snug tracking-tight mb-2 ${
+                    isFeatured ? 'text-xl sm:text-2xl' : 'text-lg sm:text-xl'
+                  } ${theme === 'dark' ? 'text-white group-hover:text-cyan-300' : 'text-slate-900 group-hover:text-blue-600'}`}>
+                    {p.name}
+                  </h3>
+
+                  <p className={`leading-relaxed ${
+                    isFeatured ? 'text-sm sm:text-[15px]' : 'text-xs sm:text-sm'
+                  } ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}>
+                    {p.description}
+                  </p>
+
+                  {/* Tech Pills */}
+                  <div className="mt-4 sm:mt-5 flex flex-wrap gap-1.5 sm:gap-2">
+                    {p.tech.map((t) => (
+                      <span className="skill-tag" key={t}>{t}</span>
+                    ))}
+                  </div>
+
+                  {/* Links — only shown for non-featured cards at the bottom */}
+                  {!isFeatured && (
+                    <div className={`mt-auto flex items-center gap-5 pt-5 sm:pt-6 border-t ${
+                      theme === 'dark' ? 'border-white/[0.06]' : 'border-slate-100'
+                    }`}>
+                      <a
+                        href={p.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={`inline-flex items-center gap-2 text-xs font-bold font-mono tracking-wide uppercase transition-colors ${
+                          theme === 'dark' ? 'text-slate-400 hover:text-cyan-400' : 'text-slate-600 hover:text-blue-600'
+                        }`}
+                      >
+                        <GithubIcon size={16} /> Code
+                      </a>
+                      {p.demo && (
+                        <a
+                          href={p.demo}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 text-xs font-bold font-mono tracking-wide uppercase text-cyan-400 hover:text-cyan-300 transition-colors"
+                        >
+                          <ExternalLinkIcon size={16} /> Live Demo
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
               </article>
             );

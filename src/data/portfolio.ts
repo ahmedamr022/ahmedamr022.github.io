@@ -85,10 +85,10 @@ export const projects: Project[] = [
   emoji: '🏢',
   category: 'fullstack',
   tag: 'AI Platform',
-  name: '3watly — Egyptian Career Intelligence Platform',
+  name: 'عواطلي (3watly) — Egyptian Career Intelligence Platform',
   description:
-    'Full-stack AI-powered career platform for the Egyptian tech job market. Scrapes and indexes real job postings from Wuzzuf, matches candidates with AI, audits CVs against ATS criteria, analyzes skill gaps, and provides real-time Egyptian market insights. Features an AI Career Copilot specialized in the Egyptian tech landscape.',
-  tech: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'Python', 'NLP'],
+    'Full-stack AI-powered career platform built for the Egyptian tech job market. Scrapes and indexes real job postings from Wuzzuf, matches candidates with AI against real skill demand, audits CVs with ATS scoring, analyzes personalized skill gaps, and provides live Egyptian market insights — all in one platform.',
+  tech: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'Python', 'NLP', 'Vercel'],
   github: 'https://github.com/ahmedamr022/3watly',
   demo: 'https://3watly.vercel.app/',
   image: '3watly-hero.png',
